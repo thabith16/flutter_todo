@@ -22,8 +22,21 @@ class _HomePageState extends State<HomePage> {
   ];
 
   // checkbox was tapped
-  void checkBoxChanged() {
+  void checkBoxChanged(bool? value, int index) {
+    setState(() {
+      toDoList[index][1] = !toDoList[index][1];
+    });
     
+  }
+
+  //create a new task
+  void createNewTask() {
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return AlertDialog();
+      },
+    );  
   }
 
   @override 
@@ -31,16 +44,22 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('To Do App'),
+        title: Text('To Do'),
         elevation: 0,
       ),
+    floatingActionButton: FloatingActionButton(
+      onPressed: () {},
+      child: Icon(Icons.add),
+    
+    ),
+
       body: ListView.builder(
         itemCount: toDoList.length,
         itemBuilder: (context, index) {
           return ToDoTile(
             taskName: toDoList[index][0], 
             taskCompleted: toDoList[index][1], 
-            onChanged: (value) => checkBoxChanged,
+            onChanged: (value) => checkBoxChanged(value, index),
             
             );
 

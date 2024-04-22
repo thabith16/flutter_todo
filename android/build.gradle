@@ -29,3 +29,17 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+apply from: '../config/constants.gradle' // (Optional) Include a constants file if used
+
+android {
+  // ... (existing content)
+
+  plugins {
+  id 'com.android.application' version '7.3.0' // Replace with your desired version (consult Flutter documentation)
+  id 'com.android.library' version '7.3.0' // Optional if your project uses library modules
+  id 'org.jetbrains.kotlin.android' version '1.7.10' // Replace with your desired version
+  id 'com.google.gms.google-services' version '4.4.1' // Optional if using Google Services
+}
+
+}

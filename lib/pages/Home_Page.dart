@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todoapp/util/dialog_box.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../util/todo_tile.dart';
+import '../data/database.dart'
 
 
 class HomePage extends StatefulWidget {
@@ -15,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // Reference the hive box
-  final _myBox = Hive.openBox('mybox');
+  final _myBox = Hive.box('mybox');
   ToDoDataBase db = ToDoDataBase();
 
 

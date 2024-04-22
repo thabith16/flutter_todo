@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todoapp/util/dialog_box.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../util/todo_tile.dart';
-import '../data/database.dart'
+import '../data/database.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       db.toDoList[index][1] = !db.toDoList[index][1];
     });
-    
+    db.updateDataBase();
   }
 
   //save new task
@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
       _controller.clear();
     });
     Navigator.of(context).pop();
+    db.updateDataBase();
   } 
 
   //create a new task
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       db.toDoList.removeAt(index);
     });
-  
+      db.updateDataBase();
   }
 
   @override 
